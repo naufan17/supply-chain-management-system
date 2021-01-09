@@ -16,7 +16,6 @@ class CreatePenjualanRetailsTable extends Migration
         Schema::create('penjualan_retails', function (Blueprint $table) {
             $table->id('id_penjualan', 10);
             $table->unsignedBigInteger('id_barang');
-            $table->string('barang');
             $table->integer('jumlah');
             $table->timestamps();
             $table->foreign('id_barang')->references('id_barang')->on('stok_retails');

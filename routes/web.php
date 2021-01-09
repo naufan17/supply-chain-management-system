@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Liveware\Supplier;
+use App\Http\Livewire\SupplierStok;
+use App\Http\Livewire\SupplierPermintaan;
+use App\Http\Livewire\RetailPesan;
+use App\Http\Livewire\RetailStok;
+use App\Http\Livewire\RetailPenjualan;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,23 +25,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/supplier-stok', function () {
-        return view('supplier.stok');
-    })->name('supplier-stok');
+    Route::get('/supplier-stok', SupplierStok::class)->name('supplier-stok');
 
-    Route::get('/supplier-permintaan', function () {
-        return view('supplier.permintaan');
-    })->name('supplier-permintaan');
+    Route::get('/supplier-permintaan', SupplierPermintaan::class)->name('supplier-permintaan');
 
-    Route::get('/retail-pesan', function () {
-        return view('retail.pesan');
-    })->name('retail-pesan');
+    Route::get('/retail-pesan', RetailPesan::class)->name('retail-pesan');
 
-    Route::get('/retail-stok', function () {
-        return view('retail.stok');
-    })->name('retail-stok');
+    Route::get('/retail-stok', RetailStok::class)->name('retail-stok');
 
-    Route::get('/retail-penjualan', function () {
-        return view('retail.penjualan');
-    })->name('retail-penjualan');
+    Route::get('/retail-penjualan', RetailPenjualan::class)->name('retail-penjualan');
 });
