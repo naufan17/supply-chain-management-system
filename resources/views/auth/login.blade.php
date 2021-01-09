@@ -1,8 +1,5 @@
 <x-guest-layout>
     <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
 
@@ -11,6 +8,11 @@
                 {{ session('status') }}
             </div>
         @endif
+        <div>
+            <h2 class="mt-6 mb-10 text-center text-2xl font-extrabold text-gray-900">
+                Supply Chain Management System
+            </h2>
+        </div>
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
