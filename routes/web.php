@@ -13,10 +13,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/login');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/supplier-stok', function () {
+        return view('supplier.stok');
+    })->name('supplier-stok');
+
+    Route::get('/supplier-permintaan', function () {
+        return view('supplier.permintaan');
+    })->name('supplier-permintaan');
+
+    Route::get('/retail-pesan', function () {
+        return view('retail.pesan');
+    })->name('retail-pesan');
+
+    Route::get('/retail-stok', function () {
+        return view('retail.stok');
+    })->name('retail-stok');
+
+    Route::get('/retail-penjualan', function () {
+        return view('retail.penjualan');
+    })->name('retail-penjualan');
+});
