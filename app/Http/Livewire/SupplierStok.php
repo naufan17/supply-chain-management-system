@@ -40,10 +40,9 @@ class SupplierStok extends Component
 
     public function update($id)
     {
-        $member = Member::find($id); //BUAT QUERY UTK PENGAMBILAN DATA
-        //LALU ASSIGN KE DALAM MASING-MASING PROPERTI DATANYA
-        $this->member_id = $id;
-        $this->name = $member->name;
-        $this->openModal(); //LALU BUKA MODAL
+        $stokSupplier = StokSupplier::find($id);
+        $this->nama_barang = $stokSupplier->nama_barang;
+        $this->jumlah = $stokSupplier->jumlah;
+        $this->showModal();
     }
 }

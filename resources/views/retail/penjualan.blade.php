@@ -25,8 +25,8 @@
                                     <td>{{ $penjualanRetail->jumlah }}</td>
                                 </tr>
                             </tbody>
+                            @endforeach
                         </table>
-                        @endforeach
                     </div>
                 </div>
             </div>

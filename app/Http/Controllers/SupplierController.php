@@ -13,6 +13,7 @@ class SupplierController extends Controller
             'nama_barang' => $request->nama_barang,
             'jumlah' => $request->jumlah
         ]);
+        
         return redirect('supplier-stok');
     }
 

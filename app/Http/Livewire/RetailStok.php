@@ -12,7 +12,7 @@ class RetailStok extends Component
 
     public function render()
     {
-        $this->stokRetails = StokRetail::all();
+        $this->stokRetails = returnStokRetail::all();
         return view('retail.stok');
     }
 
@@ -37,5 +37,12 @@ class RetailStok extends Component
         $this->nama_barang = '';
         $this->jumlah = '';
     }
-
+    
+    public function edit($id)
+    {
+        $stokRetail = StokRetail::find($id);
+        $this->nama_barang = $stokRetail->nama_barang;
+        $this->jumlah = $stokRetail->jumlah;
+        $this->showModal(); //LALU BUKA MODAL
+    }
 }

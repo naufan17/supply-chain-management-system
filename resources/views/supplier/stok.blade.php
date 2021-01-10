@@ -31,9 +31,6 @@
                                         <button wire:click="update({{ $stokSupplier->id_barang }})" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                                             Edit
                                         </button>
-                                        @if($isOpen)
-                                            @include('supplier.update')
-                                        @endif
                                         <a href="delete/{{  $stokSupplier->id_barang }}" type="button" class="inline-flex items-center px-2 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Hapus</a>
                                     </td>
                                 </tr>
@@ -57,14 +54,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('create') }}" method="POST">
-                @csrf
+                <form action="{{ url('create-barang') }}" method="GET">
                     <div class="form-group">
                         <label for="inputbarang">Nama Barang</label>
                         <input type="text" name="nama_barang" id="inputbarang" class="form-control mb-3" placeholder="barang" required autofocus>
                         <label for="inputJumlah">Jumlah</label>
                         <input type="text" name="jumlah" id="inputJumlah" class="form-control mb-3" placeholder="Jumlah" required>
-                        <button type="send" class="inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Tambah</button>
+                        <button type="send" class="mt-2 inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Tambah</button>
                     </div>
                 </form>
             </div>

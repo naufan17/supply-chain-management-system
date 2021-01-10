@@ -37,19 +37,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/retail-penjualan', RetailPenjualan::class)->name('retail-penjualan');
 
-    // Route::get('/show-create', [SupplierController::class, 'showCreateBarang'])->name('tampilkan-tambah-barang');
-
-    Route::post('/create', [SupplierController::class, 'createBarang'])->name('tambah-barang');
-
-    // Route::get('/show-update', [SupplierController::class, 'showUpdateBarang'])->name('tampilkan-update-barang');
-
-    // Route::post('/update/{barang}', [SupplierController::class, 'updateBarang'])->name('update-barang');
+    Route::get('/create-barang', [SupplierController::class, 'createBarang'])->name('tambah-barang');
 
     Route::get('/delete/{id}', [SupplierController::class, 'deleteBarang'])->name('delete-barang');
 
-    // Route::post('/kirim', [SupplierController::class, 'storekirim'])->name('kirim-permintaan');
+    Route::get('/create-penjualan', [RetailController::class, 'createPenjualan'])->name('tambah-penjualan');
 
-    // Route::post('/pesan', [RetailController::class, 'storePesan'])->name('pesan-barang');
-
-    // Route::post('/jual', [RetailController::class, 'storePenjualan'])->name('penjualan-barang');
+    Route::get('/create-pesanan', [RetailController::class, 'createPesanan'])->name('tambah-pesanan');
 });
