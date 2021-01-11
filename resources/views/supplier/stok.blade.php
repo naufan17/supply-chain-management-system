@@ -57,7 +57,7 @@
                 <form action="{{ url('create-barang') }}" method="GET">
                     <div class="form-group">
                         <label for="inputbarang">Nama Barang</label>
-                        <input type="text" name="nama_barang" id="inputbarang" class="form-control mb-3" placeholder="barang" required autofocus>
+                        <input type="text" name="nama_barang" id="inputbarang" class="form-control mb-3" placeholder="Nama Barang" required autofocus>
                         <label for="inputJumlah">Jumlah</label>
                         <input type="text" name="jumlah" id="inputJumlah" class="form-control mb-3" placeholder="Jumlah" required>
                         <button type="send" class="mt-2 inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Tambah</button>

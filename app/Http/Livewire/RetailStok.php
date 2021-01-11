@@ -12,7 +12,7 @@ class RetailStok extends Component
 
     public function render()
     {
-        $this->stokRetails = returnStokRetail::all();
+        $this->stokRetails = StokRetail::all();
         return view('retail.stok');
     }
 
