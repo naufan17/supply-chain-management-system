@@ -1,3 +1,4 @@
+<x-retail-layout>
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -36,6 +37,7 @@
         </div>
     </div>
 </div>
+</x-retail-layout>
 <div class="modal fade" id="tambahPenjualan" tabindex="-1" aria-labelledby="tambahPenjualanLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
