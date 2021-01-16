@@ -33,11 +33,11 @@ Route::middleware(['auth:sanctum', 'verified',])->group(function () {
 
     Route::get('/supplier/permintaan', SupplierPermintaan::class)->name('supplier/permintaan');
 
-    Route::get('/retail/pesan', RetailPesan::class)->name('retail/pesan');
+    Route::get('/retail/pesan', [RetailController::class, 'pesanRetail'])->name('retail/pesan');
 
-    Route::get('/retail/stok', RetailStok::class)->name('retail/stok');
+    Route::get('/retail/stok', [RetailController::class, 'stokRetail'])->name('retail/stok');
 
-    Route::get('/retail/penjualan', RetailPenjualan::class)->name('retail/penjualan');
+    Route::get('/retail/penjualan', [RetailController::class, 'penjualanRetail'])->name('retail/penjualan');
 
     Route::get('/create-barang-supplier', [SupplierController::class, 'createBarangSupplier'])->name('create-barang-supplier');
 
@@ -52,17 +52,13 @@ Route::middleware(['auth:sanctum', 'verified',])->group(function () {
 
 Route::middleware(['auth:sanctum', 'verified', 'authretail'])->group(function () {
     
-    Route::get('/retail/dashboard', RetailDashboard::class)->name('retail/dashboard');
+    Route::get('/retail/dashboard', [RetailController::class, 'dashboardRetail'])->name('retail/dashboard');
 
-    Route::get('/supplier-stok', SupplierStok::class)->name('supplier-stok');
+    Route::get('/retail/pesan', [RetailController::class, 'pesanRetail'])->name('retail/pesan');
 
-    Route::get('/supplier-permintaan', SupplierPermintaan::class)->name('supplier-permintaan');
+    Route::get('/retail/stok', [RetailController::class, 'stokRetail'])->name('retail/stok');
 
-    Route::get('/retail-pesan', RetailPesan::class)->name('retail-pesan');
-
-    Route::get('/retail-stok', RetailStok::class)->name('retail-stok');
-
-    Route::get('/retail-penjualan', RetailPenjualan::class)->name('retail-penjualan');
+    Route::get('/retail/penjualan', [RetailController::class, 'penjualanRetail'])->name('retail/penjualan');
 
     Route::get('/create-pesanan', [RetailController::class, 'createPesanan'])->name('tambah-pesanan');
 

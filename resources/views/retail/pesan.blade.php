@@ -56,7 +56,8 @@
                         <select type="text" name="id_barang" id="inputidbarang" class="form-control mb-3" placeholder="ID Barang" required autofocus>
                             @foreach($stokSuppliers as $stokSupplier)
                             <option>{{ $stokSupplier->id_barang }}</option>
-                            @endforeach    
+                            @endforeach
+                        </select>    
                         <label for="inputJumlah">Jumlah</label>
                         <input type="text" name="jumlah" id="inputJumlah" class="form-control mb-3" placeholder="Jumlah" required>
                         <button type="send" class="mt-2 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Pesan</button>

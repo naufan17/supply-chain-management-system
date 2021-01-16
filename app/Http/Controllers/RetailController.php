@@ -10,6 +10,35 @@ use Illuminate\Http\Request;
 
 class RetailController extends Controller
 {
+    public function dashboardRetail()
+    {
+        $stokRetails = StokRetail::count();
+        $penjualanRetails = PenjualanRetail::count();
+
+        return view('retail.dashboard', compact('stokRetails', 'penjualanRetails'));
+    }
+
+    public function pesanRetail()
+    {
+        $stokSuppliers = StokSupplier::all();
+        
+        return view('retail.pesan', compact('stokSuppliers'));
+    }
+
+    public function stokRetail()
+    {
+        $stokRetails = StokRetail::all();
+        
+        return view('retail.stok', compact('stokRetails'));
+    }
+
+    public function penjualanRetail()
+    {
+        $penjualanRetails = PenjualanRetail::all();
+        
+        return view('retail.penjualan', compact('penjualanRetails'));
+    }
+
     public function createPenjualan(Request $request)
     {
         PenjualanRetail::create([
@@ -17,10 +46,10 @@ class RetailController extends Controller
             'jumlah' => $request->jumlah
         ]);
 
-        $stokRetail = StokRetail::where('id_barang', $request->id_barang)->get();
+        // $stokRetail = StokRetail::where('id_barang', $request->id_barang)->get();
         
-        StokRetail::where('id_barang', $request->id_barang)
-                    ->update(['jumlah' => ($stokRetail->jumlah - $request->jumlah)]);
+        // StokRetail::where('id_barang', $request->id_barang)
+        //             ->update(['jumlah' => ($stokRetail->jumlah - $request->jumlah)]);
         
         return redirect('retail/stok');
     }
