@@ -15,6 +15,6 @@ class PenjualanRetail extends Model
 
     public function stokRetail()
     {
-        return $this->hasOne(StokRetail::class);
+        return $this->belongsTo(StokRetail::class);
     }
 }

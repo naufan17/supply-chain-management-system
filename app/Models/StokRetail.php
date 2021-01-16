@@ -12,4 +12,9 @@ class StokRetail extends Model
     protected $table = "stok_retails";
 
     protected $fillable = ['nama_barang', 'jumlah'];
+
+    public function penjualanRetail()
+    {
+        return $this->hasMany(PenjualanRetail::class);
+    }
 }

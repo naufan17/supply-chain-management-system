@@ -39,13 +39,15 @@ Route::middleware(['auth:sanctum', 'verified',])->group(function () {
 
     Route::get('/retail/penjualan', RetailPenjualan::class)->name('retail/penjualan');
 
-    Route::get('/create-barang', [SupplierController::class, 'createBarang'])->name('tambah-barang');
+    Route::get('/create-barang-supplier', [SupplierController::class, 'createBarangSupplier'])->name('create-barang-supplier');
 
-    Route::get('/delete/{id}', [SupplierController::class, 'deleteBarang'])->name('delete-barang');
+    Route::get('/update-stok-supplier', [SupplierController::class, 'updateBarang'])->name('update-stok-supplier');
 
-    Route::get('/create-penjualan', [RetailController::class, 'createPenjualan'])->name('tambah-penjualan');
+    Route::get('/supplier/delete-barang/{id}', [SupplierController::class, 'deleteBarang'])->name('delete-barang');
 
-    Route::get('/create-pesanan', [RetailController::class, 'createPesanan'])->name('tambah-pesanan');
+    Route::get('/supplier/delete-permintaan/{id}', [SupplierController::class, 'deletePermintaan'])->name('delete-permintaan');
+
+    Route::get('/create-barang-retail', [SupplierController::class, 'createBarangRetail'])->name('create-barang-retail');
 });
 
 Route::middleware(['auth:sanctum', 'verified', 'authretail'])->group(function () {
@@ -62,11 +64,9 @@ Route::middleware(['auth:sanctum', 'verified', 'authretail'])->group(function ()
 
     Route::get('/retail-penjualan', RetailPenjualan::class)->name('retail-penjualan');
 
-    Route::get('/create-barang', [SupplierController::class, 'createBarang'])->name('tambah-barang');
-
-    Route::get('/delete/{id}', [SupplierController::class, 'deleteBarang'])->name('delete-barang');
+    Route::get('/create-pesanan', [RetailController::class, 'createPesanan'])->name('tambah-pesanan');
 
     Route::get('/create-penjualan', [RetailController::class, 'createPenjualan'])->name('tambah-penjualan');
 
-    Route::get('/create-pesanan', [RetailController::class, 'createPesanan'])->name('tambah-pesanan');
+    Route::get('/update-stok-retail', [RetailController::class, 'updateBarang'])->name('update-stok-retail');
 });

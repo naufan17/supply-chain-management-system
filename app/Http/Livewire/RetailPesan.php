@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Livewire;
-use App\Models\StokSupplier;
 
 use Livewire\Component;
+use App\Models\StokSupplier;
 
 class RetailPesan extends Component
 {

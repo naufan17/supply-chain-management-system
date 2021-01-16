@@ -22,7 +22,7 @@ class RetailController extends Controller
         StokRetail::where('id_barang', $request->id_barang)
                     ->update(['jumlah' => ($stokRetail->jumlah - $request->jumlah)]);
         
-        return redirect('retail-stok');
+        return redirect('retail/stok');
     }
 
     public function createPesanan(Request $request)
@@ -31,12 +31,15 @@ class RetailController extends Controller
             'id_barang' => $request->id_barang,
             'jumlah' => $request->jumlah
         ]);
+        
+        return redirect('retail/pesan');
+    }
 
-        $stokSupplier= StokSupplier::where('id_barang', $request->id_barang)->get();
+    public function updateBarang(Request $request)
+    {  
+        StokRetail::where('id_barang', $request->id_barang)
+                    ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah]);
         
-        StokSupplier::where('id_barang', $request->id_barang)
-                    ->update(['jumlah' => ($stokSupplier->jumlah - $request->jumlah)]);
-        
-        return redirect('retail-pesan');
+        return redirect('retail/stok');
     }
 }

@@ -15,6 +15,6 @@ class PermintaanSupplier extends Model
 
     public function stokSupplier()
     {
-        return $this->hasOne(StokSupplier::class);
+        return $this->belongsTo(StokRetail::class);
     }
 }

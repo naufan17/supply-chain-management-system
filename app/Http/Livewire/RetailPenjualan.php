@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Livewire;
-use App\Models\PenjualanRetail;
 
 use Livewire\Component;
+use App\Models\PenjualanRetail;
 
 class RetailPenjualan extends Component
 {

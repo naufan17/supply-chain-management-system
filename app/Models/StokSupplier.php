@@ -12,4 +12,9 @@ class StokSupplier extends Model
     protected $table = "stok_suppliers";
 
     protected $fillable = ['nama_barang', 'jumlah'];
+
+    public function permintaanSupplier()
+    {
+        return $this->hasMany(PermintaanSupplier::class);
+    }  
 }

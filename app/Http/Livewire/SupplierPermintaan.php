@@ -1,19 +1,20 @@
 <?php
 
 namespace App\Http\Livewire;
-use App\Models\PermintaanSupplier;
 
 use Livewire\Component;
+use App\Models\PermintaanSupplier;
+use App\Models\StokSupplier;
 
 class SupplierPermintaan extends Component
-{
+{    
+    public $permintaanSuppliers,$stokSuppliers;
     public $isOpen = 0;
-    
-    public $permintaanSuppliers;
 
     public function render()
     {
         $this->permintaanSuppliers = PermintaanSupplier::all();
+        $this->stokSuppliers = StokSupplier::all();
         return view('supplier.permintaan');
     }
 
