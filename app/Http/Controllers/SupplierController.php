@@ -29,7 +29,7 @@ class SupplierController extends Controller
     public function updateBarang(Request $request)
     {  
         StokSupplier::where('id_barang', $request->id_barang)
-                    ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah]);
+                    ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah, 'keterangan' => 'Tersedia']);
         
         return redirect('supplier/stok');
     }
@@ -43,10 +43,18 @@ class SupplierController extends Controller
 
     public function createBarangRetail(Request $request)
     {
-        // PermintaanSupplier::where('id_pesanan', $request->id_pesanan)->delete();
+        foreach(StokSupplier::where('id_barang', $request->id_barang)->get() as $stokSupplier){
+            if($request->jumlah < $stokSupplier->jumlah){
+                StokSupplier::where('id_barang', $request->id_barang)
+                            ->update(['jumlah' => ($stokSupplier->jumlah - $request->jumlah)]);
+            } else if($request->jumlah >= $stokSupplier->jumlah) {
+                StokSupplier::where('id_barang', $request->id_barang)
+                            ->update(['jumlah' => ($stokSupplier->jumlah - $request->jumlah), 'keterangan' => 'Habis']);
+            }
+        }
 
         PermintaanSupplier::where('id_pesanan', $request->id_pesanan)
-        ->update(['keterangan' => 'Terkirim']);
+                            ->update(['keterangan' => 'Terkirim']);
 
         StokRetail::create([
             'nama_barang' => $request->nama_barang,

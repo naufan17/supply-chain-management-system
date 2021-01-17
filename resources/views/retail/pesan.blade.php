@@ -18,6 +18,7 @@
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
                                         <th>Jumlah</th>
+                                        <th>Keterangan</th>
                                     </tr>
                                 </thead>
                                 @foreach($stokSuppliers as $stokSupplier)
@@ -27,6 +28,7 @@
                                         <td>{{ $stokSupplier->id_barang }}</td>                               
                                         <td>{{ $stokSupplier->nama_barang }}</td>
                                         <td>{{ $stokSupplier->jumlah }}</td>
+                                        <td>{{ $stokSupplier->keterangan }}</td>
                                     </tr>
                                 </tbody>
                                 @endforeach
@@ -53,15 +55,19 @@
                                         <th>Kode Pesanan</th>
                                         <th>Kode Barang</th>
                                         <th>Jumlah</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 @foreach($permintaanSuppliers as $permintaanSupplier)
                                 <tbody>
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $permintaanSupplier->id_pesanan}}</td>                               
+                                        <td>{{ $permintaanSupplier->id_pesanan }}</td>                               
                                         <td>{{ $permintaanSupplier->id_barang }}</td>
                                         <td>{{ $permintaanSupplier->jumlah }}</td>
+                                        <td>
+                                            <a href="delete-permintaan/{{ $permintaanSupplier->id_pesanan }}" type="button" class="inline-flex items-center px-2 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Batalkan</a>
+                                        </td>
                                     </tr>
                                 </tbody>
                                 @endforeach

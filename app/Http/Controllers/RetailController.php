@@ -47,10 +47,16 @@ class RetailController extends Controller
             'jumlah' => $request->jumlah
         ]);
 
-        // $stokRetail = StokRetail::where('id_barang', $request->id_barang)->get();
-        
-        // StokRetail::where('id_barang', $request->id_barang)
-        //             ->update(['jumlah' => ($stokRetail->jumlah - $request->jumlah)]);
+        foreach(StokRetail::where('id_barang', $request->id_barang)->get() as $stokRetail){
+            if($request->jumlah < $stokRetail->jumlah){
+                StokRetail::where('id_barang', $request->id_barang)
+                            ->update(['jumlah' => ($stokRetail->jumlah - $request->jumlah)]);
+            } else if ($request->jumlah >= $stokRetail->jumlah){
+                StokRetail::where('id_barang', $request->id_barang)
+                            ->update(['jumlah' => ($stokRetail->jumlah - $request->jumlah), 'keterangan' => 'Habis']);
+            }
+            
+        }
         
         return redirect('retail/stok');
     }
@@ -68,8 +74,15 @@ class RetailController extends Controller
     public function updateBarang(Request $request)
     {  
         StokRetail::where('id_barang', $request->id_barang)
-                    ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah]);
+                    ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah, 'keterangan' => 'Tersedia']);
         
         return redirect('retail/stok');
+    }
+
+    public function deletePermintaan($id)
+    {
+        PermintaanSupplier::where('id_pesanan', $id)->delete();
+        
+        return redirect('retail/pesan');
     }
 }

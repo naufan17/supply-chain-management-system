@@ -45,7 +45,7 @@ Route::middleware(['auth:sanctum', 'verified',])->group(function () {
 
     Route::get('/supplier/delete-barang/{id}', [SupplierController::class, 'deleteBarang'])->name('delete-barang');
 
-    Route::get('/supplier/delete-permintaan/{id}', [SupplierController::class, 'deletePermintaan'])->name('delete-permintaan');
+    Route::get('/supplier/delete-permintaan/{id}', [SupplierController::class, 'deletePermintaan'])->name('delete-permintaan-supplier');
 
     Route::get('/create-barang-retail', [SupplierController::class, 'createBarangRetail'])->name('create-barang-retail');
 });
@@ -61,6 +61,8 @@ Route::middleware(['auth:sanctum', 'verified', 'authretail'])->group(function ()
     Route::get('/retail/penjualan', [RetailController::class, 'penjualanRetail'])->name('retail/penjualan');
 
     Route::get('/create-pesanan', [RetailController::class, 'createPesanan'])->name('tambah-pesanan');
+
+    Route::get('/retail/delete-permintaan/{id}', [RetailController::class, 'deletePermintaan'])->name('delete-permintaan-retail');
 
     Route::get('/create-penjualan', [RetailController::class, 'createPenjualan'])->name('tambah-penjualan');
 

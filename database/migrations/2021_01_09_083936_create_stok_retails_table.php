@@ -17,6 +17,7 @@ class CreateStokRetailsTable extends Migration
             $table->id('id_barang', 10);
             $table->string('nama_barang');
             $table->integer('jumlah');
+            $table->string('keterangan')->default("Tersedia");
             $table->timestamps();
         });
     }
