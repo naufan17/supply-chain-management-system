@@ -43,7 +43,10 @@ class SupplierController extends Controller
 
     public function createBarangRetail(Request $request)
     {
-        PermintaanSupplier::where('id_pesanan', $request->id_pesanan)->delete();
+        // PermintaanSupplier::where('id_pesanan', $request->id_pesanan)->delete();
+
+        PermintaanSupplier::where('id_pesanan', $request->id_pesanan)
+        ->update(['keterangan' => 'Terkirim']);
 
         StokRetail::create([
             'nama_barang' => $request->nama_barang,

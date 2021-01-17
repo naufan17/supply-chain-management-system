@@ -21,8 +21,9 @@ class RetailController extends Controller
     public function pesanRetail()
     {
         $stokSuppliers = StokSupplier::all();
+        $permintaanSuppliers = PermintaanSupplier::where('keterangan', 'Belum Dikirim')->get();
         
-        return view('retail.pesan', compact('stokSuppliers'));
+        return view('retail.pesan', compact('stokSuppliers', 'permintaanSuppliers'));
     }
 
     public function stokRetail()

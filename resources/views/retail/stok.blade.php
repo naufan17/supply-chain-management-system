@@ -24,6 +24,7 @@
                                         <th>Kode Barang</th>
                                         <th>Nama Barang</th>
                                         <th>Jumlah</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 @foreach($stokRetails as $stokRetail)
@@ -33,6 +34,9 @@
                                         <td>{{ $stokRetail->id_barang }}</td>                               
                                         <td>{{ $stokRetail->nama_barang }}</td>
                                         <td>{{ $stokRetail->jumlah }}</td>
+                                        <td>
+                                            <a href="delete-permintaan/{{ $stokRetail->id_barang }}" type="button" class="inline-flex items-center px-2 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Hapus</a>
+                                        </td>
                                     </tr>
                                 </tbody>
                                 @endforeach
