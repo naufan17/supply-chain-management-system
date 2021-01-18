@@ -16,10 +16,12 @@ class CreatePermintaanSuppliersTable extends Migration
         Schema::create('permintaan_suppliers', function (Blueprint $table) {
             $table->id('id_pesanan', 10);
             $table->unsignedBigInteger('id_barang');
+            $table->unsignedBigInteger('id_retail');
             $table->integer('jumlah');
             $table->string('keterangan')->default("Belum Dikirim");
             $table->timestamps();
             $table->foreign('id_barang')->references('id_barang')->on('stok_suppliers');
+            $table->foreign('id_retail')->references('id')->on('users');
         });
     }
 

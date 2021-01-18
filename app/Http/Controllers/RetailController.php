@@ -44,6 +44,7 @@ class RetailController extends Controller
     {
         PenjualanRetail::create([
             'id_barang' => $request->id_barang,
+            'id_retail' => 1,
             'jumlah' => $request->jumlah
         ]);
 
@@ -65,6 +66,7 @@ class RetailController extends Controller
     {
         PermintaanSupplier::create([
             'id_barang' => $request->id_barang,
+            'id_retail' => 1,
             'jumlah' => $request->jumlah
         ]);
         

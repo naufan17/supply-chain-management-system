@@ -3,14 +3,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center m-4">
-                    <h1 class="h4">Stok Barang</h1>
-                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" data-toggle="modal"  data-target="#tambahPenjualan">
+                    <h1 class="h4 mr-96">Stok Barang</h1>
+                    <button type="button" class=" ml-96 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" data-toggle="modal"  data-target="#tambahPenjualan">
                         Jual
                     </button>
-                </div>
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center m-4">
-                    <h1 class="h4"></h1>
-                    <button class="inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" data-toggle="modal"  data-target="#editBarang">
+                    <button class=" -ml-20 inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" data-toggle="modal"  data-target="#editBarang">
                         Update
                     </button>
                 </div>
