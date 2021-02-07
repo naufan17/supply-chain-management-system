@@ -11,34 +11,53 @@
                         Update
                     </button>
                 </div>
-                <div class="mt-2 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1">
-                        <div class="p-6">
-                            <table class="table table-sm">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Kode Barang</th>
-                                        <th>Nama Barang</th>
-                                        <th>Jumlah</th>
-                                        <th>Keterangan</th>
-                                    </tr>
-                                </thead>
-                                @foreach($stokRetails as $stokRetail)
-                                <tbody>
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $stokRetail->id_barang }}</td>                               
-                                        <td>{{ $stokRetail->nama_barang }}</td>
-                                        <td>{{ $stokRetail->jumlah }}</td>
-                                        <td>{{ $stokRetail->keterangan }}</td>
-                                    </tr>
-                                </tbody>
-                                @endforeach
-                            </table>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-12 -mt-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
+                            No
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
+                            Kode Barang
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
+                            Nama Barang
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
+                            Jumlah
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
+                            Keterangan
+                        </th>
+                    </thead>
+                    @foreach($stokRetails as $stokRetail)
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-3 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ $loop->iteration }}</div>
+                            </td>
+                            <td class="px-6 py-3 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ $stokRetail->id_barang }}</div>
+                            </td>
+                            <td class="px-6 py-3 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ $stokRetail->nama_barang }}</div>
+                            </td>
+                            <td class="px-6 py-3 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ $stokRetail->jumlah }}</div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ $stokRetail->keterangan }}</div>                                
+                            </td>
+                        </tr>
+                    </tbody>
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>
