@@ -27,32 +27,38 @@ class RetailController extends Controller
 
     public function formPesanBarang($id)
     {
-        $stokRetails = StokRetail::where('id_barang', $id)->get();
+        $stokSuppliers = StokSupplier::where('id_barang', $id)->get();
         
-        return view('retail/form-pesan', compact('stokRetails'));
+        return view('retail/form-pesan', compact('stokSuppliers'));
     }
 
-    public function createPesanan(Request $request)
+    public function tambahPesanan(Request $request)
     {
-        PermintaanSupplier::create([
-            'id_barang' => $request->id_barang,
-            'id_retail' => 1,
-            'jumlah' => $request->jumlah
-        ]);
+        foreach(StokSupplier::where('id_barang', $request->id_barang)->get() as $stokSupplier){
+            if($request->jumlah <= $stokSupplier->jumlah){
+                PermintaanSupplier::create([
+                    'id_barang' => $request->id_barang,
+                    'id_retail' => 1,
+                    'jumlah' => $request->jumlah
+                ]);
+            } else if ($request->jumlah > $stokSupplier->jumlah){
+            }  
+        }
         
         return redirect('retail/pesan');
     }
 
     public function pesan()
     {
-        $permintaanSuppliers = PermintaanSupplier::where('keterangan', 'Belum Dikirim')->get();
+        $permintaanSuppliers = PermintaanSupplier::all();
         
         return view('retail.pesan', compact('permintaanSuppliers'));
     }
 
-    public function deletePesanan($id)
+    public function batalPesanan($id)
     {
-        PermintaanSupplier::where('id_pesanan', $id)->delete();
+        PermintaanSupplier::where('id_pesanan', $id)
+                        ->update(['keterangan' => 'Batal']);
         
         return redirect('retail/pesan');
     }
@@ -95,20 +101,26 @@ class RetailController extends Controller
 
     public function createPenjualan(Request $request)
     {
-        PenjualanRetail::create([
-            'id_barang' => $request->id_barang,
-            'id_retail' => 1,
-            'jumlah' => $request->jumlah
-        ]);
-
         foreach(StokRetail::where('id_barang', $request->id_barang)->get() as $stokRetail){
             if($request->jumlah < $stokRetail->jumlah){
                 StokRetail::where('id_barang', $request->id_barang)
                             ->update(['jumlah' => ($stokRetail->jumlah - $request->jumlah)]);
-            } else if ($request->jumlah >= $stokRetail->jumlah){
+                PenjualanRetail::create([
+                    'id_barang' => $request->id_barang,
+                    'id_retail' => 1,
+                    'jumlah' => $request->jumlah
+                ]);
+            } else if ($request->jumlah = $stokRetail->jumlah){
                 StokRetail::where('id_barang', $request->id_barang)
                             ->update(['jumlah' => ($stokRetail->jumlah - $request->jumlah), 'keterangan' => 'Habis']);
-            }  
+                PenjualanRetail::create([
+                    'id_barang' => $request->id_barang,
+                    'id_retail' => 1,
+                    'jumlah' => $request->jumlah
+                ]);
+            } else if ($request->jumlah > $stokRetail->jumlah){
+                
+            }
         }
 
         return redirect('retail/stok');

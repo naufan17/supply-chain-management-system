@@ -22,7 +22,7 @@ class SupplierController extends Controller
         return view('supplier.form-tambah');
     }
 
-    public function createBarang(Request $request)
+    public function tambahBarang(Request $request)
     {
         StokSupplier::create([
             'nama_barang' => $request->nama_barang,
@@ -39,14 +39,14 @@ class SupplierController extends Controller
         return view('supplier.stok', compact('stokSuppliers'));
     }
 
-    public function formUpdateBarang($id)
+    public function formEditBarang($id)
     {
         $stokSuppliers = StokSupplier::where('id_barang', $id)->get();
         
         return view('supplier.form-edit', compact('stokSuppliers'));
     }
 
-    public function updateBarang(Request $request)
+    public function editBarang(Request $request)
     {  
         StokSupplier::where('id_barang', $request->id_barang)
                     ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah, 'keterangan' => 'Tersedia']);
@@ -54,7 +54,7 @@ class SupplierController extends Controller
         return redirect('supplier/stok');
     }
 
-    public function deleteBarang($id)
+    public function batalBarang($id)
     {
         StokSupplier::where('id_barang', $id)->delete();
         
@@ -72,13 +72,6 @@ class SupplierController extends Controller
     public function formKirimBarang()
     {
         return view('supplier.form-kirim');
-    }
-
-    public function deletePermintaan($id)
-    {
-        PermintaanSupplier::where('id_pesanan', $id)->delete();
-        
-        return redirect('supplier/permintaan');
     }
 
     public function createBarangRetail(Request $request)
@@ -100,6 +93,14 @@ class SupplierController extends Controller
             'nama_barang' => $request->nama_barang,
             'jumlah' => $request->jumlah
         ]);
+        
+        return redirect('supplier/permintaan');
+    }
+
+    public function batalPermintaan($id)
+    {
+        PermintaanSupplier::where('id_pesanan', $id)
+                        ->update(['keterangan' => 'Batal']);
         
         return redirect('supplier/permintaan');
     }

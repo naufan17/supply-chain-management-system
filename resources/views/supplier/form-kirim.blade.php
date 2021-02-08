@@ -7,7 +7,7 @@
                 </div>
                 <form action="{{ url('create-barang-supplier') }}" method="GET">
                     <div class="shadow overflow-hidden sm:rounded-md">
-                        <div class="px-5 py-5 bg-white sm:p-6">
+                        <div class="px-5 py-4 bg-white sm:p-6">
                             <div class="grid grid-cols-4 gap-6">
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="kode_barang" class="block text-sm font-medium text-gray-700">Kode Barang</label>

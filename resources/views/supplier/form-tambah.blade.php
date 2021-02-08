@@ -5,9 +5,9 @@
                 <div class="text-center m-4">
                     <h1 class="h4">Tambah Barang</h1>
                 </div>
-                <form action="{{ url('supplier/create-barang') }}" method="GET">
+                <form action="{{ url('supplier/tambah-barang') }}" method="GET">
                     <div class="shadow overflow-hidden sm:rounded-md">
-                        <div class="px-5 py-5 bg-white sm:p-6">
+                        <div class="px-5 py-4 bg-white sm:p-6">
                             <div class="grid grid-cols-4 gap-6">
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="nama_barang" class="block text-sm font-medium text-gray-700">Nama Barang</label>

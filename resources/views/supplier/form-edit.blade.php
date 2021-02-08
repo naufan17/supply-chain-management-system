@@ -5,9 +5,9 @@
                 <div class="text-center m-4">
                     <h1 class="h4">Edit Barang</h1>
                 </div>
-                <form action="{{ url('supplier/update-stok') }}" method="GET">
+                <form action="{{ url('supplier/edit-barang') }}" method="GET">
                     <div class="shadow overflow-hidden sm:rounded-md">
-                        <div class="px-5 py-5 bg-white sm:p-6">
+                        <div class="px-5 py-4 bg-white sm:p-6">
                             <div class="grid grid-cols-4 gap-6">
                             @foreach($stokSuppliers as $stokSupplier)
                                 <input type="hidden" name="id_barang" autocomplete="email" value="{{ $stokSupplier->id_barang }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">

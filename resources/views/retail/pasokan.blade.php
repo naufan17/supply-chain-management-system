@@ -40,10 +40,21 @@
                                 <div class="text-sm text-gray-900">{{ $stokSupplier->jumlah }}</div>
                             </td>
                             <td class="px-6 py-2 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $stokSupplier->keterangan }}</div>                                
+                                @if($stokSupplier->keterangan == "Tersedia")
+                                    <span class="px-3 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        {{ $stokSupplier->keterangan }}
+                                    </span>
+                                @elseif($stokSupplier->keterangan == "Habis")
+                                    <span class="px-4 inline-flex text-sm leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        {{ $stokSupplier->keterangan }}
+                                    </span>
+                                @endif                              
                             </td>
                             <td>
-                                <a href="" type="button" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Pesan</a>
+                                @if($stokSupplier->keterangan == "Tersedia")
+                                    <a href="form-tambah-pesan/{{ $stokSupplier->id_barang }}" type="button" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Pesan</a>
+                                @elseif($stokSupplier->keterangan == "Habis")
+                                @endif
                             </td>
                         </tr>
                     </tbody>
@@ -54,7 +65,7 @@
     </div>
 </x-retail-layout>
 
-<div class="modal fade" id="tambahPesanan" tabindex="-1" aria-labelledby="tambahPesananLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="tambahPesanan" tabindex="-1" aria-labelledby="tambahPesananLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -81,4 +92,4 @@
             </div>
         </div>
     </div>
-</div
+</div -->

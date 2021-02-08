@@ -18,6 +18,9 @@
                             Jumlah
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
+                            Keterangan
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
                             Aksi
                         </th>
                     </thead>
@@ -34,10 +37,16 @@
                                 <div class="text-sm text-gray-900">{{ $permintaanSupplier->id_barang }}</div>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{ $permintaanSupplier->jumlah }}</div>
+                                <div class="text-sm text-gray-900">{{ $permintaanSupplier->jumlah }}</div>
+                            </td>
+                            <td class="px-6 py-3 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ $permintaanSupplier->keterangan }}</div>
                             </td>
                             <td class="px-6 py-2 whitespace-nowrap">
-                                <a href="delete-permintaan/{{ $permintaanSupplier->id_pesanan }}" type="button" class="inline-flex items-center px-2 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Batalkan</a>
+                                @if($permintaanSupplier->keterangan == "Terkirim" || $permintaanSupplier->keterangan == "Batal")
+                                @elseif($permintaanSupplier->keterangan == "Belum Dikirim")
+                                    <a href="batal-pesanan/{{ $permintaanSupplier->id_pesanan }}" type="button" class="inline-flex items-center px-2 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Batalkan</a>
+                                @endif                   
                             </td>
                         </tr>
                     </tbody>
