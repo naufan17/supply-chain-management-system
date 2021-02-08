@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class RetailController extends Controller
 {
-    public function dashboardRetail()
+    public function dashboard()
     {
         $stokRetails = StokRetail::count();
         $penjualanRetails = PenjualanRetail::count();
@@ -18,7 +18,7 @@ class RetailController extends Controller
         return view('retail.dashboard', compact('stokRetails', 'penjualanRetails'));
     }
 
-    public function pesanRetail()
+    public function pesan()
     {
         $stokSuppliers = StokSupplier::all();
         $permintaanSuppliers = PermintaanSupplier::where('keterangan', 'Belum Dikirim')->get();
@@ -26,14 +26,21 @@ class RetailController extends Controller
         return view('retail.pesan', compact('stokSuppliers', 'permintaanSuppliers'));
     }
 
-    public function stokRetail()
+    public function stok()
     {
         $stokRetails = StokRetail::all();
         
         return view('retail.stok', compact('stokRetails'));
     }
 
-    public function penjualanRetail()
+    public function formUpdateBarang($id)
+    {
+        $stokRetails = StokRetail::where('id_barang', $id)->get();
+        
+        return view('retail/edit', compact('stokRetails'));
+    }
+
+    public function penjualan()
     {
         $penjualanRetails = PenjualanRetail::all();
         

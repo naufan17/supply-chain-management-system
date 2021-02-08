@@ -1,65 +1,53 @@
-<div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center m-4">
-                <h1 class="h4 mr-96">Stok Barang</h1>
-                <button type="button" class="ml-96 inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" data-toggle="modal"  data-target="#tambahBarang">
-                    Tambah
-                </button>
-                <button class="-ml-20 inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" data-toggle="modal"  data-target="#editBarang">
-                    Update
-                </button>
+<x-app-layout>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
+                            No
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
+                            Kode Barang
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
+                            Nama Barang
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
+                            Jumlah
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
+                            Aksi
+                        </th>
+                    </thead>
+                    @foreach($stokSuppliers as $stokSupplier)
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-3 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ $loop->iteration }}</div>
+                            </td>
+                            <td class="px-6 py-3 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ $stokSupplier->id_barang }}</div>
+                            </td>
+                            <td class="px-6 py-3 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ $stokSupplier->nama_barang }}</div>
+                            </td>
+                            <td class="px-6 py-3 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ $stokSupplier->jumlah }}</div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <a href="form-update-barang/{{ $stokSupplier->id_barang }}" type="button" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Edit</a>
+                                <a href="delete-barang/{{ $stokSupplier->id_barang }}" type="button" class="inline-flex items-center px-2 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Hapus</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>
-</div>
-<div class="py-12 -mt-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
-                    <tr>
-                    <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                        No
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                        Kode Barang
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                        Nama Barang
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                        Jumlah
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                        Aksi
-                    </th>
-                </thead>
-                @foreach($stokSuppliers as $stokSupplier)
-                <tbody class="bg-white divide-y divide-gray-200">
-                    <tr>
-                        <td class="px-6 py-3 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ $loop->iteration }}</div>
-                        </td>
-                        <td class="px-6 py-3 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ $stokSupplier->id_barang }}</div>
-                        </td>
-                        <td class="px-6 py-3 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ $stokSupplier->nama_barang }}</div>
-                        </td>
-                        <td class="px-6 py-3 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">{{ $stokSupplier->jumlah }}</div>
-                        </td>
-                        <td class="px-6 py-2 whitespace-nowrap">
-                            <a href="delete-barang/{{ $stokSupplier->id_barang }}" type="button" class="inline-flex items-center px-2 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Hapus</a>
-                        </td>
-                    </tr>
-                </tbody>
-                @endforeach
-            </table>
-        </div>
-    </div>
-</div>
+</x-app-layout>
 
 <div class="modal fade" id="tambahBarang" tabindex="-1" aria-labelledby="tambahBarangLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -9,12 +9,47 @@ use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {    
-    public function createBarangSupplier(Request $request)
+    public function dashboard()
+    {
+        $stokSuppliers = StokSupplier::count();
+        $permintaanSuppliers = PermintaanSupplier::count();
+
+        return view('supplier.dashboard', compact('stokSuppliers', 'permintaanSuppliers'));
+    }
+
+    public function formTambahBarang()
+    {
+        return view('supplier/tambah');
+    }
+
+    public function createBarang(Request $request)
     {
         StokSupplier::create([
             'nama_barang' => $request->nama_barang,
             'jumlah' => $request->jumlah
         ]);
+        
+        return redirect('supplier/stok');
+    }
+
+    public function stok()
+    {
+        $stokSuppliers = StokSupplier::all();
+        
+        return view('supplier.stok', compact('stokSuppliers'));
+    }
+
+    public function formUpdateBarang($id)
+    {
+        $stokSuppliers = StokSupplier::where('id_barang', $id)->get();
+        
+        return view('supplier/edit', compact('stokSuppliers'));
+    }
+
+    public function updateBarang(Request $request)
+    {  
+        StokSupplier::where('id_barang', $request->id_barang)
+                    ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah, 'keterangan' => 'Tersedia']);
         
         return redirect('supplier/stok');
     }
@@ -26,12 +61,17 @@ class SupplierController extends Controller
         return redirect('supplier/stok');
     }
 
-    public function updateBarang(Request $request)
-    {  
-        StokSupplier::where('id_barang', $request->id_barang)
-                    ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah, 'keterangan' => 'Tersedia']);
+    public function permintaan()
+    {
+        $permintaanSuppliers = PermintaanSupplier::all();
+        $stokSuppliers = StokSupplier::all();
         
-        return redirect('supplier/stok');
+        return view('supplier.permintaan', compact('permintaanSuppliers', 'stokSuppliers'));
+    }
+
+    public function formKirimBarang()
+    {
+        return view('supplier/kirim');
     }
 
     public function deletePermintaan($id)

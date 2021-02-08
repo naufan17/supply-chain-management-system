@@ -30,8 +30,8 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
-                            <!-- Logo
-                            <div class="flex-shrink-0 flex items-center">
+                            <!-- Logo -->
+                            <!-- <div class="flex-shrink-0 flex items-center">
                                 <a href="{{ route('supplier/dashboard') }}">
                                     <span class="text-sm font-weight-bold">Supply Chain</span>
                                     <br>
@@ -42,6 +42,11 @@
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <x-jet-nav-link href="{{ route('supplier/dashboard') }}" :active="request()->routeIs('supplier/dashboard')">
                                     {{ __('Dashboard') }}
+                                </x-jet-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <x-jet-nav-link href="{{ route('supplier/form-tambah-barang') }}" :active="request()->routeIs('supplier/form-tambah-barang')">
+                                    {{ __('Tambah Stok') }}
                                 </x-jet-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
