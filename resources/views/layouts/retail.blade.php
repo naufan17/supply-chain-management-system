@@ -37,18 +37,23 @@
                                 </x-jet-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <x-jet-nav-link href="{{ route('retail/pasokan') }}" :active="request()->routeIs('retail/pasokan')">
+                                    {{ __('Pasokan') }}
+                                </x-jet-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <x-jet-nav-link href="{{ route('retail/pesan') }}" :active="request()->routeIs('retail/pesan')">
-                                    {{ __('Pesan Retail') }}
+                                    {{ __('Pesan') }}
                                 </x-jet-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <x-jet-nav-link href="{{ route('retail/stok') }}" :active="request()->routeIs('retail/stok')">
-                                    {{ __('Stok Retail') }}
+                                    {{ __('Stok') }}
                                 </x-jet-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <x-jet-nav-link href="{{ route('retail/penjualan') }}" :active="request()->routeIs('retail/penjualan')">
-                                    {{ __('Penjualan Retail') }}
+                                    {{ __('Penjualan') }}
                                 </x-jet-nav-link>
                             </div>
                         </div>

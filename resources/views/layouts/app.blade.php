@@ -51,12 +51,12 @@
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <x-jet-nav-link href="{{ route('supplier/stok') }}" :active="request()->routeIs('supplier/stok')">
-                                    {{ __('Stok Supplier') }}
+                                    {{ __('Stok') }}
                                 </x-jet-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <x-jet-nav-link href="{{ route('supplier/permintaan') }}" :active="request()->routeIs('supplier/permintaan')">
-                                    {{ __('Permintaan Supplier') }}
+                                    {{ __('Permintaan Pesanan') }}
                                 </x-jet-nav-link>
                             </div>
                         </div>

@@ -19,7 +19,7 @@ class SupplierController extends Controller
 
     public function formTambahBarang()
     {
-        return view('supplier/tambah');
+        return view('supplier.form-tambah');
     }
 
     public function createBarang(Request $request)
@@ -43,7 +43,7 @@ class SupplierController extends Controller
     {
         $stokSuppliers = StokSupplier::where('id_barang', $id)->get();
         
-        return view('supplier/edit', compact('stokSuppliers'));
+        return view('supplier.form-edit', compact('stokSuppliers'));
     }
 
     public function updateBarang(Request $request)
@@ -71,7 +71,7 @@ class SupplierController extends Controller
 
     public function formKirimBarang()
     {
-        return view('supplier/kirim');
+        return view('supplier.form-kirim');
     }
 
     public function deletePermintaan($id)

@@ -18,12 +18,43 @@ class RetailController extends Controller
         return view('retail.dashboard', compact('stokRetails', 'penjualanRetails'));
     }
 
-    public function pesan()
+    public function pasokan()
     {
         $stokSuppliers = StokSupplier::all();
+        
+        return view('retail.pasokan', compact('stokSuppliers'));
+    }
+
+    public function formPesanBarang($id)
+    {
+        $stokRetails = StokRetail::where('id_barang', $id)->get();
+        
+        return view('retail/form-pesan', compact('stokRetails'));
+    }
+
+    public function createPesanan(Request $request)
+    {
+        PermintaanSupplier::create([
+            'id_barang' => $request->id_barang,
+            'id_retail' => 1,
+            'jumlah' => $request->jumlah
+        ]);
+        
+        return redirect('retail/pesan');
+    }
+
+    public function pesan()
+    {
         $permintaanSuppliers = PermintaanSupplier::where('keterangan', 'Belum Dikirim')->get();
         
-        return view('retail.pesan', compact('stokSuppliers', 'permintaanSuppliers'));
+        return view('retail.pesan', compact('permintaanSuppliers'));
+    }
+
+    public function deletePesanan($id)
+    {
+        PermintaanSupplier::where('id_pesanan', $id)->delete();
+        
+        return redirect('retail/pesan');
     }
 
     public function stok()
@@ -37,14 +68,29 @@ class RetailController extends Controller
     {
         $stokRetails = StokRetail::where('id_barang', $id)->get();
         
-        return view('retail/edit', compact('stokRetails'));
+        return view('retail.form-edit', compact('stokRetails'));
     }
 
-    public function penjualan()
-    {
-        $penjualanRetails = PenjualanRetail::all();
+    public function updateBarang(Request $request)
+    {  
+        StokRetail::where('id_barang', $request->id_barang)
+                    ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah, 'keterangan' => 'Tersedia']);
         
-        return view('retail.penjualan', compact('penjualanRetails'));
+        return redirect('retail/stok');
+    }
+
+    public function deleteBarang($id)
+    {
+        StokRetail::where('id_barang', $id)->delete();
+        
+        return redirect('retail/stok');
+    }
+
+    public function formCreatePenjualan($id)
+    {
+        $stokRetails = stokRetail::where('id_barang', $id)->get();
+        
+        return view('retail.form-jual', compact('stokRetails'));
     }
 
     public function createPenjualan(Request $request)
@@ -62,36 +108,16 @@ class RetailController extends Controller
             } else if ($request->jumlah >= $stokRetail->jumlah){
                 StokRetail::where('id_barang', $request->id_barang)
                             ->update(['jumlah' => ($stokRetail->jumlah - $request->jumlah), 'keterangan' => 'Habis']);
-            }
-            
+            }  
         }
-        
+
         return redirect('retail/stok');
     }
 
-    public function createPesanan(Request $request)
+    public function penjualan()
     {
-        PermintaanSupplier::create([
-            'id_barang' => $request->id_barang,
-            'id_retail' => 1,
-            'jumlah' => $request->jumlah
-        ]);
+        $penjualanRetails = PenjualanRetail::all();
         
-        return redirect('retail/pesan');
-    }
-
-    public function updateBarang(Request $request)
-    {  
-        StokRetail::where('id_barang', $request->id_barang)
-                    ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah, 'keterangan' => 'Tersedia']);
-        
-        return redirect('retail/stok');
-    }
-
-    public function deletePermintaan($id)
-    {
-        PermintaanSupplier::where('id_pesanan', $id)->delete();
-        
-        return redirect('retail/pesan');
+        return view('retail.penjualan', compact('penjualanRetails'));
     }
 }
