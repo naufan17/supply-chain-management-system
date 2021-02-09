@@ -14,8 +14,8 @@
                                     <input type="text" name="nama_barang" id="nama_barang" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div class="col-span-6 sm:col-span-4">
-                                    <label for="jumlah" class="block text-sm font-medium text-gray-700">Jumlah</label>
-                                    <input type="text" name="jumlah" id="jumlah" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <label for="stok" class="block text-sm font-medium text-gray-700">Stok</label>
+                                    <input type="text" name="stok" id="stok" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>
                         </div>

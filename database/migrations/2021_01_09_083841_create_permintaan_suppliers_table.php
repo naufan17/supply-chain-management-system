@@ -17,7 +17,7 @@ class CreatePermintaanSuppliersTable extends Migration
             $table->id('id_pesanan', 10);
             $table->unsignedBigInteger('id_barang');
             $table->unsignedBigInteger('id_retail');
-            $table->integer('jumlah');
+            $table->integer('total');
             $table->string('keterangan')->default("Belum Dikirim");
             $table->timestamps();
             $table->foreign('id_barang')->references('id_barang')->on('stok_suppliers');

@@ -25,10 +25,10 @@
                     </div>
                     <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            Jumlah Tersedia
+                            Stok Tersedia
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $stokSupplier->jumlah }}
+                            {{ $stokSupplier->stok }}
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -48,8 +48,8 @@
                             @foreach($stokSuppliers as $stokSupplier)
                                 <input type="hidden" name="id_barang" value="{{ $stokSupplier->id_barang }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 <div class="col-span-6 sm:col-span-4">
-                                    <label for="jumlah" class="block text-sm font-medium text-gray-700">Jumlah Pesan</label>
-                                    <input type="text" name="jumlah" id="jumlah" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <label for="total" class="block text-sm font-medium text-gray-700">Total Pesan</label>
+                                    <input type="text" name="total" id="total" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>
                             @endforeach

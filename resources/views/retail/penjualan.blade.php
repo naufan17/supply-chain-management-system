@@ -12,10 +12,10 @@
                             Kode Penjualan
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                            Kode Barang
+                            Nama Barang
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                            Jumlah
+                            Total
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
                             Detail
@@ -31,10 +31,10 @@
                                 <div class="text-sm text-gray-900">{{ $penjualanRetail->id_penjualan }}</div>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $penjualanRetail->id_barang }}</div>
+                                <div class="text-sm text-gray-900">{{ $penjualanRetail->nama_barang }}</div>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $penjualanRetail->jumlah }}</div>
+                                <div class="text-sm text-gray-900">{{ $penjualanRetail->total }}</div>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
                                 <a href="detail-penjualan/{{ $penjualanRetail->id_penjualan }}" type="button" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Detail</a> 

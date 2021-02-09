@@ -6,6 +6,7 @@ use App\Models\StokSupplier;
 use App\Models\StokRetail;
 use App\Models\PermintaanSupplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SupplierController extends Controller
 {    
@@ -26,7 +27,7 @@ class SupplierController extends Controller
     {
         StokSupplier::create([
             'nama_barang' => $request->nama_barang,
-            'jumlah' => $request->jumlah
+            'stok' => $request->stok
         ]);
         
         return redirect('supplier/stok');
@@ -49,7 +50,7 @@ class SupplierController extends Controller
     public function editBarang(Request $request)
     {  
         StokSupplier::where('id_barang', $request->id_barang)
-                    ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah, 'keterangan' => 'Tersedia']);
+                    ->update(['nama_barang' => $request->nama_barang, 'stok' => $request->stok, 'keterangan' => 'Tersedia']);
         
         return redirect('supplier/stok');
     }
@@ -64,9 +65,9 @@ class SupplierController extends Controller
     public function permintaan()
     {
         $permintaanSuppliers = PermintaanSupplier::all();
-        $stokSuppliers = StokSupplier::all();
+        // $permintaanSuppliers = PermintaanSupplier::leftJoin('stok_suppliers', 'permintaan_suppliers.id_barang', '=', 'stok_suppliers.id_barang')->get();
         
-        return view('supplier.permintaan', compact('permintaanSuppliers', 'stokSuppliers'));
+        return view('supplier.permintaan', compact('permintaanSuppliers'));
     }
 
     public function formKirimBarang($id)
@@ -109,7 +110,9 @@ class SupplierController extends Controller
 
     public function detailPermintaan($id)
     {
-        $permintaanSuppliers = PermintaanSupplier::where('id_pesanan', $id)->get();
+        $permintaanSuppliers = PermintaanSupplier::leftJoin('stok_suppliers', 'permintaan_suppliers.id_barang', '=', 'stok_suppliers.id_barang')
+                                                    ->where('id_pesanan', $id)
+                                                    ->get();
         
         return view('supplier.detail-permintaan', compact('permintaanSuppliers'));
     }

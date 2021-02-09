@@ -25,13 +25,21 @@
                     </div>
                     <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            Jumlah Pesan
+                            Nama Barang
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $permintaanSupplier->jumlah }}
+                            {{ $permintaanSupplier->nama_barang }}
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">
+                            Total Pesan
+                        </dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $permintaanSupplier->total }}
+                        </dd>
+                    </div>
+                    <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
                             Keterangan
                         </dt>
@@ -39,7 +47,7 @@
                             {{ $permintaanSupplier->keterangan }}
                         </dd>
                     </div>
-                    <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
                             Tanggal Pesan
                         </dt>

@@ -16,7 +16,7 @@ class CreateStokRetailsTable extends Migration
         Schema::create('stok_retails', function (Blueprint $table) {
             $table->id('id_barang', 10);
             $table->string('nama_barang');
-            $table->integer('jumlah');
+            $table->integer('stok');
             $table->string('keterangan')->default("Tersedia");
             $table->timestamps();
         });

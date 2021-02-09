@@ -35,22 +35,21 @@ class RetailController extends Controller
     public function tambahPesanan(Request $request)
     {
         foreach(StokSupplier::where('id_barang', $request->id_barang)->get() as $stokSupplier){
-            if($request->jumlah <= $stokSupplier->jumlah){
+            if($request->total <= $stokSupplier->stok){
                 PermintaanSupplier::create([
                     'id_barang' => $request->id_barang,
                     'id_retail' => 1,
-                    'jumlah' => $request->jumlah
+                    'total' => $request->total
                 ]);
-            } else if ($request->jumlah > $stokSupplier->jumlah){
             }  
         }
-        
         return redirect('retail/pesan');
     }
 
     public function pesan()
     {
         $permintaanSuppliers = PermintaanSupplier::all();
+        // $permintaanSuppliers = PermintaanSupplier::leftJoin('stok_suppliers', 'permintaan_suppliers.id_barang', '=', 'stok_suppliers.id_barang')->get();
         
         return view('retail.pesan', compact('permintaanSuppliers'));
     }
@@ -65,7 +64,9 @@ class RetailController extends Controller
 
     public function detailPesanan($id)
     {
-        $permintaanSuppliers = PermintaanSupplier::where('id_pesanan', $id)->get();
+        $permintaanSuppliers = PermintaanSupplier::leftJoin('stok_suppliers', 'permintaan_suppliers.id_barang', '=', 'stok_suppliers.id_barang')
+                                                    ->where('id_pesanan', $id)
+                                                    ->get();
         
         return view('retail.detail-pesanan', compact('permintaanSuppliers'));
     }
@@ -109,23 +110,23 @@ class RetailController extends Controller
     public function tambahPenjualan(Request $request)
     {
         foreach(StokRetail::where('id_barang', $request->id_barang)->get() as $stokRetail){
-            if($request->jumlah < $stokRetail->jumlah){
+            if($request->total < $stokRetail->stok){
                 StokRetail::where('id_barang', $request->id_barang)
-                            ->update(['jumlah' => ($stokRetail->jumlah - $request->jumlah)]);
+                            ->update(['stok' => ($stokRetail->stok - $request->total)]);
                 PenjualanRetail::create([
                     'id_barang' => $request->id_barang,
                     'id_retail' => 1,
-                    'jumlah' => $request->jumlah
+                    'stok' => $request->total
                 ]);
-            } else if ($request->jumlah = $stokRetail->jumlah){
+            } else if ($request->total = $stokRetail->stok){
                 StokRetail::where('id_barang', $request->id_barang)
-                            ->update(['jumlah' => ($stokRetail->jumlah - $request->jumlah), 'keterangan' => 'Habis']);
+                            ->update(['stok' => ($stokRetail->stok - $request->total), 'keterangan' => 'Habis']);
                 PenjualanRetail::create([
                     'id_barang' => $request->id_barang,
                     'id_retail' => 1,
-                    'jumlah' => $request->jumlah
+                    'stok' => $request->total
                 ]);
-            } else if ($request->jumlah > $stokRetail->jumlah){
+            } else if ($request->total > $stokRetail->stok){
                 
             }
         }
@@ -135,14 +136,16 @@ class RetailController extends Controller
 
     public function penjualan()
     {
-        $penjualanRetails = PenjualanRetail::all();
+        $penjualanRetails = PenjualanRetail::leftJoin('stok_retails', 'penjualan_retails.id_barang', '=', 'stok_retails.id_barang')->get();
         
         return view('retail.penjualan', compact('penjualanRetails'));
     }
 
     public function detailPenjualan($id)
     {
-        $penjualanRetails = PenjualanRetail::where('id_penjualan', $id)->get();
+        $penjualanRetails = PenjualanRetail::leftJoin('stok_retails', 'penjualan_retails.id_barang', '=', 'stok_retails.id_barang')
+                                            ->where('id_penjualan', $id)
+                                            ->get();
         
         return view('retail.detail-penjualan', compact('penjualanRetails'));
     }

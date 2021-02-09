@@ -15,7 +15,7 @@
                             Nama Barang
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                            Jumlah
+                            Stok
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
                             Keterangan
@@ -40,7 +40,7 @@
                                 <div class="text-sm text-gray-900">{{ $stokRetail->nama_barang }}</div>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $stokRetail->jumlah }}</div>
+                                <div class="text-sm text-gray-900">{{ $stokRetail->stok }}</div>
                             </td>
                             <td class="px-6 py-2 whitespace-nowrap">
                                 @if($stokRetail->keterangan == "Tersedia")

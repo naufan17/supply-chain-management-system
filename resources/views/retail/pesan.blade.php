@@ -12,10 +12,10 @@
                             Kode Pesanan
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                            Kode Barang
+                            Nama Barang
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                            Jumlah
+                            Total
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
                             Keterangan
@@ -37,10 +37,10 @@
                                 <div class="text-sm text-gray-900">{{ $permintaanSupplier->id_pesanan }}</div>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $permintaanSupplier->id_barang }}</div>
+                                <div class="text-sm text-gray-900">{{ $permintaanSupplier->nama_barang }}</div>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $permintaanSupplier->jumlah }}</div>
+                                <div class="text-sm text-gray-900">{{ $permintaanSupplier->total }}</div>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
                                 @if($permintaanSupplier->keterangan == "Terkirim")

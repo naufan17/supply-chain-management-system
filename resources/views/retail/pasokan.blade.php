@@ -15,7 +15,7 @@
                             Nama Barang
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                            Jumlah
+                            Stok
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
                             Keterangan
@@ -37,7 +37,7 @@
                                 <div class="text-sm text-gray-900">{{ $stokSupplier->nama_barang }}</div>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $stokSupplier->jumlah }}</div>
+                                <div class="text-sm text-gray-900">{{ $stokSupplier->stok }}</div>
                             </td>
                             <td class="px-6 py-2 whitespace-nowrap">
                                 @if($stokSupplier->keterangan == "Tersedia")
@@ -64,32 +64,3 @@
         </div>
     </div>
 </x-retail-layout>
-
-<!-- <div class="modal fade" id="tambahPesanan" tabindex="-1" aria-labelledby="tambahPesananLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="tambahPesananLabel">Pesan Barang</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ url('create-pesanan') }}" method="GET">
-                @csrf
-                    <div class="form-group">
-                        <label for="inputidbarang">ID Barang</label>
-                        <select type="text" name="id_barang" id="inputidbarang" class="form-control mb-3" placeholder="ID Barang" required autofocus>
-                            @foreach($stokSuppliers as $stokSupplier)
-                            <option>{{ $stokSupplier->id_barang }}</option>
-                            @endforeach
-                        </select>    
-                        <label for="inputJumlah">Jumlah</label>
-                        <input type="text" name="jumlah" id="inputJumlah" class="form-control mb-3" placeholder="Jumlah" required>
-                        <button type="send" class="mt-2 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Pesan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div -->
