@@ -63,6 +63,13 @@ class RetailController extends Controller
         return redirect('retail/pesan');
     }
 
+    public function detailPesanan($id)
+    {
+        $permintaanSuppliers = PermintaanSupplier::where('id_pesanan', $id)->get();
+        
+        return view('retail.detail-pesanan', compact('permintaanSuppliers'));
+    }
+
     public function stok()
     {
         $stokRetails = StokRetail::all();
@@ -131,5 +138,12 @@ class RetailController extends Controller
         $penjualanRetails = PenjualanRetail::all();
         
         return view('retail.penjualan', compact('penjualanRetails'));
+    }
+
+    public function detailPenjualan($id)
+    {
+        $penjualanRetails = PenjualanRetail::where('id_penjualan', $id)->get();
+        
+        return view('retail.detail-penjualan', compact('penjualanRetails'));
     }
 }

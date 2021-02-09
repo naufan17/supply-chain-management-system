@@ -54,7 +54,7 @@ class SupplierController extends Controller
         return redirect('supplier/stok');
     }
 
-    public function batalBarang($id)
+    public function hapusBarang($id)
     {
         StokSupplier::where('id_barang', $id)->delete();
         
@@ -103,5 +103,12 @@ class SupplierController extends Controller
                         ->update(['keterangan' => 'Batal']);
         
         return redirect('supplier/permintaan');
+    }
+
+    public function detailPermintaan($id)
+    {
+        $permintaanSuppliers = PermintaanSupplier::where('id_pesanan', $id)->get();
+        
+        return view('supplier.detail-permintaan', compact('permintaanSuppliers'));
     }
 }

@@ -10,14 +10,14 @@
                         <div class="px-5 py-4 bg-white sm:p-6">
                             <div class="grid grid-cols-4 gap-6">
                             @foreach($stokSuppliers as $stokSupplier)
-                                <input type="hidden" name="id_barang" autocomplete="email" value="{{ $stokSupplier->id_barang }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <input type="hidden" name="id_barang" value="{{ $stokSupplier->id_barang }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="nama_barang" class="block text-sm font-medium text-gray-700">Nama Barang</label>
-                                    <input type="text" name="nama_barang" id="nama_barang" autocomplete="email" value="{{ $stokSupplier->nama_barang }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="nama_barang" id="nama_barang" value="{{ $stokSupplier->nama_barang }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="jumlah" class="block text-sm font-medium text-gray-700">Jumlah</label>
-                                    <input type="text" name="jumlah" id="jumlah" autocomplete="email" value="{{ $stokSupplier->jumlah }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="jumlah" id="jumlah" value="{{ $stokSupplier->jumlah }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>
                             @endforeach

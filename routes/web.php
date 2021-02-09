@@ -35,12 +35,13 @@ Route::middleware(['auth:sanctum', 'verified',])->group(function () {
     Route::get('/supplier/stok', [SupplierController::class, 'stok'])->name('supplier/stok');
     Route::get('/supplier/form-edit-barang/{id}', [SupplierController::class, 'formEditBarang'])->name('supplier/form-edit-barang');
     Route::get('/supplier/edit-barang', [SupplierController::class, 'editBarang'])->name('supplier/edit-barang');
-    Route::get('/supplier/delete-barang/{id}', [SupplierController::class, 'deleteBarang'])->name('supplier/delete-barang');
+    Route::get('/supplier/hapus-barang/{id}', [SupplierController::class, 'hapusBarang'])->name('supplier/hapus-barang');
 
     Route::get('/supplier/permintaan', [SupplierController::class, 'permintaan'])->name('supplier/permintaan');
     Route::get('/supplier/form-kirim-barang', [SupplierController::class, 'formkirimBarang'])->name('supplier/kirim-barang');
     Route::get('/create-barang-retail', [SupplierController::class, 'createBarangRetail'])->name('create-barang-retail');
     Route::get('/supplier/batal-permintaan/{id}', [SupplierController::class, 'batalPermintaan'])->name('batal-permintaan');
+    Route::get('/supplier/detail-permintaan/{id}', [SupplierController::class, 'detailPermintaan'])->name('retail/detail-permintaan');
 
 });
 
@@ -54,6 +55,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authretail'])->group(function ()
 
     Route::get('/retail/pesan', [RetailController::class, 'pesan'])->name('retail/pesan');
     Route::get('/retail/batal-pesanan/{id}', [RetailController::class, 'batalPesanan'])->name('batal-pesanan');
+    Route::get('/retail/detail-pesanan/{id}', [RetailController::class, 'detailPesanan'])->name('retail/detail-pesanan');
 
     Route::get('/retail/stok', [RetailController::class, 'stok'])->name('retail/stok');
     Route::get('/retail/form-update-barang/{id}', [RetailController::class, 'formUpdateBarang'])->name('retail/form-update-barang');
@@ -63,4 +65,5 @@ Route::middleware(['auth:sanctum', 'verified', 'authretail'])->group(function ()
     Route::get('/retail/create-penjualan', [RetailController::class, 'createPenjualan'])->name('tambah-penjualan');
 
     Route::get('/retail/penjualan', [RetailController::class, 'penjualan'])->name('retail/penjualan');
+    Route::get('/retail/detail-penjualan/{id}', [RetailController::class, 'detailPenjualan'])->name('retail/detail-penjualan');
 });

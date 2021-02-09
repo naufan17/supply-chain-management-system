@@ -12,7 +12,7 @@
                             ID Barang
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        {{ $stokSupplier->id_barang }}
+                            {{ $stokSupplier->id_barang }}
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -46,10 +46,10 @@
                         <div class="px-5 py-4 bg-white sm:p-6">
                             <div class="grid grid-cols-4 gap-6">
                             @foreach($stokSuppliers as $stokSupplier)
-                                <input type="hidden" name="id_barang" autocomplete="email" value="{{ $stokSupplier->id_barang }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <input type="hidden" name="id_barang" value="{{ $stokSupplier->id_barang }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="jumlah" class="block text-sm font-medium text-gray-700">Jumlah Pesan</label>
-                                    <input type="text" name="jumlah" id="jumlah" autocomplete="email" value="" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="jumlah" id="jumlah" value="" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>
                             @endforeach

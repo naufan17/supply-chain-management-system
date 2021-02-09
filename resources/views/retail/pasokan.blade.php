@@ -21,7 +21,7 @@
                             Keterangan
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-900 uppercase font-bold tracking-wider">
-                            Aksi
+                            Pesan
                         </th>
                     </thead>
                     @foreach($stokSuppliers as $stokSupplier)
@@ -50,7 +50,7 @@
                                     </span>
                                 @endif                              
                             </td>
-                            <td>
+                            <td class="px-6 py-2 whitespace-nowrap">
                                 @if($stokSupplier->keterangan == "Tersedia")
                                     <a href="form-tambah-pesan/{{ $stokSupplier->id_barang }}" type="button" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Pesan</a>
                                 @elseif($stokSupplier->keterangan == "Habis")
