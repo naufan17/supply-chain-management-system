@@ -12,10 +12,20 @@ class SupplierController extends Controller
 {    
     public function dashboard()
     {
-        $stokSuppliers = StokSupplier::count();
-        $permintaanSuppliers = PermintaanSupplier::count();
+        $jumlahBarangs = StokSupplier::count();
+        $permintaanBarangs = PermintaanSupplier::count();
 
-        return view('supplier.dashboard', compact('stokSuppliers', 'permintaanSuppliers'));
+        $stokBarangs = 0;
+        foreach(StokSupplier::all() as $stokSupplier){
+            $stokBarangs = $stokBarangs + $stokSupplier->stok;
+        }
+
+        $totalBarangs = 0;
+        foreach(PermintaanSupplier::where('status', "Terkirim")->get() as $permintaanSupplier){
+            $totalBarangs = $totalBarangs + $permintaanSupplier->total;
+        }
+
+        return view('supplier.dashboard', compact('jumlahBarangs', 'permintaanBarangs', 'stokBarangs', 'totalBarangs'));
     }
 
     public function formTambahBarang()

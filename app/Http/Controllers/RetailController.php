@@ -12,10 +12,20 @@ class RetailController extends Controller
 {
     public function dashboard()
     {
-        $stokRetails = StokRetail::count();
-        $penjualanRetails = PenjualanRetail::count();
+        $jumlahBarangs = StokRetail::count();
+        $penjualanBarangs = PenjualanRetail::count();
 
-        return view('retail.dashboard', compact('stokRetails', 'penjualanRetails'));
+        $stokBarangs = 0;
+        foreach(StokRetail::all() as $stokRetail){
+            $stokBarangs = $stokBarangs + $stokRetail->stok;
+        }
+
+        $totalBarangs = 0;
+        foreach(PenjualanRetail::all() as $penjualanRetail){
+            $totalBarangs = $totalBarangs + $penjualanRetail->total;
+        }
+
+        return view('retail.dashboard', compact('jumlahBarangs', 'penjualanBarangs', 'stokBarangs', 'totalBarangs'));
     }
 
     public function pasokan()
@@ -117,7 +127,7 @@ class RetailController extends Controller
                     'id_retail' => 1,
                     'total' => $request->total
                 ]);
-            } else if ($request->total = $stokRetail->stok){
+            } else if ($request->total == $stokRetail->stok){
                 StokRetail::where('id_barang', $request->id_barang)
                             ->update(['stok' => ($stokRetail->stok - $request->total), 'keterangan' => 'Habis']);
                 PenjualanRetail::create([
@@ -128,7 +138,7 @@ class RetailController extends Controller
             }
         }
 
-        return redirect('retail/stok');
+        return redirect('retail/penjualan');
     }
 
     public function penjualan()
