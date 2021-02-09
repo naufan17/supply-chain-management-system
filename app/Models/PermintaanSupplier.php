@@ -11,7 +11,7 @@ class PermintaanSupplier extends Model
 
     protected $table = "permintaan_suppliers";
 
-    protected $fillable = ['id_barang', 'id_retail', 'jumlah'];
+    protected $fillable = ['id_barang', 'id_retail', 'total'];
 
     public function stokSupplier()
     {

@@ -11,7 +11,7 @@ class PenjualanRetail extends Model
 
     protected $table = "penjualan_retails";
 
-    protected $fillable = ['id_barang', 'id_retail', 'jumlah'];
+    protected $fillable = ['id_barang', 'id_retail', 'total'];
 
     public function stokRetail()
     {

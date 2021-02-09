@@ -50,7 +50,7 @@ class SupplierController extends Controller
     public function editBarang(Request $request)
     {  
         StokSupplier::where('id_barang', $request->id_barang)
-                    ->update(['nama_barang' => $request->nama_barang, 'stok' => $request->stok, 'keterangan' => 'Tersedia']);
+                    ->update(['nama_barang' => $request->nama_barang, 'stok' => $request->stok]);
         
         return redirect('supplier/stok');
     }
@@ -64,37 +64,38 @@ class SupplierController extends Controller
 
     public function permintaan()
     {
-        $permintaanSuppliers = PermintaanSupplier::all();
-        // $permintaanSuppliers = PermintaanSupplier::leftJoin('stok_suppliers', 'permintaan_suppliers.id_barang', '=', 'stok_suppliers.id_barang')->get();
+        $permintaanSuppliers = PermintaanSupplier::leftJoin('stok_suppliers', 'permintaan_suppliers.id_barang', '=', 'stok_suppliers.id_barang')->get();
         
         return view('supplier.permintaan', compact('permintaanSuppliers'));
     }
 
     public function formKirimBarang($id)
     {
-        $permintaanSuppliers = PermintaanSupplier::where('id_pesanan', $id)->get();
+        $permintaanSuppliers = PermintaanSupplier::leftJoin('stok_suppliers', 'permintaan_suppliers.id_barang', '=', 'stok_suppliers.id_barang')
+                                                    ->where('id_pesanan', $id)
+                                                    ->get();
 
         return view('supplier.form-kirim', compact('permintaanSuppliers'));
     }
 
-    public function kirimBarangRetail(Request $request)
+    public function kirimBarang(Request $request)
     {
         foreach(StokSupplier::where('id_barang', $request->id_barang)->get() as $stokSupplier){
-            if($request->jumlah < $stokSupplier->jumlah){
+            if($request->total < $stokSupplier->stok){
                 StokSupplier::where('id_barang', $request->id_barang)
-                            ->update(['jumlah' => ($stokSupplier->jumlah - $request->jumlah)]);
-            } else if($request->jumlah >= $stokSupplier->jumlah) {
+                            ->update(['stok' => ($stokSupplier->stok - $request->total)]);
+            } else if($request->total == $stokSupplier->stok) {
                 StokSupplier::where('id_barang', $request->id_barang)
-                            ->update(['jumlah' => ($stokSupplier->jumlah - $request->jumlah), 'keterangan' => 'Habis']);
+                            ->update(['stok' => ($stokSupplier->stok - $request->total), 'keterangan' => 'Habis']);
             }
         }
 
         PermintaanSupplier::where('id_pesanan', $request->id_pesanan)
-                            ->update(['keterangan' => 'Terkirim']);
+                            ->update(['status' => 'Terkirim']);
 
         StokRetail::create([
             'nama_barang' => $request->nama_barang,
-            'jumlah' => $request->jumlah
+            'stok' => $request->total
         ]);
         
         return redirect('supplier/permintaan');
@@ -103,7 +104,7 @@ class SupplierController extends Controller
     public function batalPermintaan($id)
     {
         PermintaanSupplier::where('id_pesanan', $id)
-                        ->update(['keterangan' => 'Batal']);
+                        ->update(['status' => 'Batal']);
         
         return redirect('supplier/permintaan');
     }

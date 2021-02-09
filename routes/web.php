@@ -39,7 +39,7 @@ Route::middleware(['auth:sanctum', 'verified',])->group(function () {
 
     Route::get('/supplier/permintaan', [SupplierController::class, 'permintaan'])->name('supplier/permintaan');
     Route::get('/supplier/form-kirim-barang/{id}', [SupplierController::class, 'formkirimBarang'])->name('supplier/kirim-barang');
-    Route::get('/kirim-barang-retail', [SupplierController::class, 'kirimBarangRetail'])->name('kirim-barang-retail');
+    Route::get('/kirim-barang', [SupplierController::class, 'kirimBarang'])->name('kirim-barang');
     Route::get('/supplier/batal-permintaan/{id}', [SupplierController::class, 'batalPermintaan'])->name('batal-permintaan');
     Route::get('/supplier/detail-permintaan/{id}', [SupplierController::class, 'detailPermintaan'])->name('retail/detail-permintaan');
 

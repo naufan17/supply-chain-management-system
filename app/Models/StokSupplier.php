@@ -11,7 +11,7 @@ class StokSupplier extends Model
 
     protected $table = "stok_suppliers";
 
-    protected $fillable = ['nama_barang', 'jumlah'];
+    protected $fillable = ['nama_barang', 'stok'];
 
     public function permintaanSupplier()
     {

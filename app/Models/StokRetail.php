@@ -11,7 +11,7 @@ class StokRetail extends Model
 
     protected $table = "stok_retails";
 
-    protected $fillable = ['nama_barang', 'jumlah'];
+    protected $fillable = ['nama_barang', 'stok'];
 
     public function penjualanRetail()
     {

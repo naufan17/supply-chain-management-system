@@ -48,8 +48,7 @@ class RetailController extends Controller
 
     public function pesan()
     {
-        $permintaanSuppliers = PermintaanSupplier::all();
-        // $permintaanSuppliers = PermintaanSupplier::leftJoin('stok_suppliers', 'permintaan_suppliers.id_barang', '=', 'stok_suppliers.id_barang')->get();
+        $permintaanSuppliers = PermintaanSupplier::leftJoin('stok_suppliers', 'permintaan_suppliers.id_barang', '=', 'stok_suppliers.id_barang')->get();
         
         return view('retail.pesan', compact('permintaanSuppliers'));
     }
@@ -57,7 +56,7 @@ class RetailController extends Controller
     public function batalPesanan($id)
     {
         PermintaanSupplier::where('id_pesanan', $id)
-                        ->update(['keterangan' => 'Batal']);
+                        ->update(['status' => 'Batal']);
         
         return redirect('retail/pesan');
     }
@@ -88,7 +87,7 @@ class RetailController extends Controller
     public function editBarang(Request $request)
     {  
         StokRetail::where('id_barang', $request->id_barang)
-                    ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah, 'keterangan' => 'Tersedia']);
+                    ->update(['nama_barang' => $request->nama_barang, 'stok' => $request->stok, 'keterangan' => 'Tersedia']);
         
         return redirect('retail/stok');
     }
@@ -116,7 +115,7 @@ class RetailController extends Controller
                 PenjualanRetail::create([
                     'id_barang' => $request->id_barang,
                     'id_retail' => 1,
-                    'stok' => $request->total
+                    'total' => $request->total
                 ]);
             } else if ($request->total = $stokRetail->stok){
                 StokRetail::where('id_barang', $request->id_barang)
@@ -124,10 +123,8 @@ class RetailController extends Controller
                 PenjualanRetail::create([
                     'id_barang' => $request->id_barang,
                     'id_retail' => 1,
-                    'stok' => $request->total
+                    'total' => $request->total
                 ]);
-            } else if ($request->total > $stokRetail->stok){
-                
             }
         }
 
