@@ -49,7 +49,7 @@
                                 <input type="hidden" name="id_barang" value="{{ $stokSupplier->id_barang }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="jumlah" class="block text-sm font-medium text-gray-700">Jumlah Pesan</label>
-                                    <input type="text" name="jumlah" id="jumlah" value="" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="jumlah" id="jumlah" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>
                             @endforeach

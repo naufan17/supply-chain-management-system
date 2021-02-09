@@ -54,12 +54,12 @@
                                 @endif                             
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
-                                <a href="form-update-barang/{{ $stokRetail->id_barang }}" type="button" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Edit</a>
-                                <a href="delete-barang/{{ $stokRetail->id_barang }}" type="button" class="inline-flex items-center px-2 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Hapus</a>
+                                <a href="form-edit-barang/{{ $stokRetail->id_barang }}" type="button" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Edit</a>
+                                <a href="hapus-barang/{{ $stokRetail->id_barang }}" type="button" class="inline-flex items-center px-2 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Hapus</a>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
                                 @if($stokRetail->keterangan == "Tersedia")
-                                    <a href="form-create-penjualan/{{ $stokRetail->id_barang }}" type="button" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">Jual</a>
+                                    <a href="form-tambah-penjualan/{{ $stokRetail->id_barang }}" type="button" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white font-bold bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">Jual</a>
                                 @elseif($stokRetail->keterangan == "Habis")
                                 @endif
                             </td>

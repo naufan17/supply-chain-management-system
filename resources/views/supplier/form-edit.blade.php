@@ -1,12 +1,12 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="bg-gray-50 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="text-center m-4">
                     <h1 class="h4">Edit Barang</h1>
                 </div>
                 <form action="{{ url('supplier/edit-barang') }}" method="GET">
-                    <div class="shadow overflow-hidden sm:rounded-md">
+                    <div class="overflow-hidden sm:rounded-md">
                         <div class="px-5 py-4 bg-white sm:p-6">
                             <div class="grid grid-cols-4 gap-6">
                             @foreach($stokSuppliers as $stokSupplier)

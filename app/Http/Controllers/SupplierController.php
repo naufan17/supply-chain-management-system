@@ -69,12 +69,14 @@ class SupplierController extends Controller
         return view('supplier.permintaan', compact('permintaanSuppliers', 'stokSuppliers'));
     }
 
-    public function formKirimBarang()
+    public function formKirimBarang($id)
     {
-        return view('supplier.form-kirim');
+        $permintaanSuppliers = PermintaanSupplier::where('id_pesanan', $id)->get();
+
+        return view('supplier.form-kirim', compact('permintaanSuppliers'));
     }
 
-    public function createBarangRetail(Request $request)
+    public function kirimBarangRetail(Request $request)
     {
         foreach(StokSupplier::where('id_barang', $request->id_barang)->get() as $stokSupplier){
             if($request->jumlah < $stokSupplier->jumlah){

@@ -41,15 +41,15 @@
                     </div>
                     @endforeach
                 </dl>
-                <form action="{{ url('retail/create-penjualan') }}" method="GET">
-                    <div class="shadow overflow-hidden sm:rounded-md">
+                <form action="{{ url('retail/tambah-penjualan') }}" method="GET">
+                    <div class="overflow-hidden sm:rounded-md">
                         <div class="px-5 py-4 bg-white sm:p-6">
                             <div class="grid grid-cols-4 gap-6">
                             @foreach($stokRetails as $stokRetail)
-                                <input type="hidden" name="id_barang" autocomplete="email" value="{{ $stokRetail->id_barang }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <input type="hidden" name="id_barang" value="{{ $stokRetail->id_barang }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="jumlah" class="block text-sm font-medium text-gray-700">Jumlah Jual</label>
-                                    <input type="text" name="jumlah" id="jumlah" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="jumlah" id="jumlah" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>
                             @endforeach

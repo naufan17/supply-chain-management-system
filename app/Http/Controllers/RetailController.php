@@ -77,14 +77,14 @@ class RetailController extends Controller
         return view('retail.stok', compact('stokRetails'));
     }
 
-    public function formUpdateBarang($id)
+    public function formEditBarang($id)
     {
         $stokRetails = StokRetail::where('id_barang', $id)->get();
         
         return view('retail.form-edit', compact('stokRetails'));
     }
 
-    public function updateBarang(Request $request)
+    public function editBarang(Request $request)
     {  
         StokRetail::where('id_barang', $request->id_barang)
                     ->update(['nama_barang' => $request->nama_barang, 'jumlah' => $request->jumlah, 'keterangan' => 'Tersedia']);
@@ -92,21 +92,21 @@ class RetailController extends Controller
         return redirect('retail/stok');
     }
 
-    public function deleteBarang($id)
+    public function hapusBarang($id)
     {
         StokRetail::where('id_barang', $id)->delete();
         
         return redirect('retail/stok');
     }
 
-    public function formCreatePenjualan($id)
+    public function formTambahPenjualan($id)
     {
         $stokRetails = stokRetail::where('id_barang', $id)->get();
         
         return view('retail.form-jual', compact('stokRetails'));
     }
 
-    public function createPenjualan(Request $request)
+    public function tambahPenjualan(Request $request)
     {
         foreach(StokRetail::where('id_barang', $request->id_barang)->get() as $stokRetail){
             if($request->jumlah < $stokRetail->jumlah){

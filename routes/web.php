@@ -38,8 +38,8 @@ Route::middleware(['auth:sanctum', 'verified',])->group(function () {
     Route::get('/supplier/hapus-barang/{id}', [SupplierController::class, 'hapusBarang'])->name('supplier/hapus-barang');
 
     Route::get('/supplier/permintaan', [SupplierController::class, 'permintaan'])->name('supplier/permintaan');
-    Route::get('/supplier/form-kirim-barang', [SupplierController::class, 'formkirimBarang'])->name('supplier/kirim-barang');
-    Route::get('/create-barang-retail', [SupplierController::class, 'createBarangRetail'])->name('create-barang-retail');
+    Route::get('/supplier/form-kirim-barang/{id}', [SupplierController::class, 'formkirimBarang'])->name('supplier/kirim-barang');
+    Route::get('/kirim-barang-retail', [SupplierController::class, 'kirimBarangRetail'])->name('kirim-barang-retail');
     Route::get('/supplier/batal-permintaan/{id}', [SupplierController::class, 'batalPermintaan'])->name('batal-permintaan');
     Route::get('/supplier/detail-permintaan/{id}', [SupplierController::class, 'detailPermintaan'])->name('retail/detail-permintaan');
 
@@ -58,11 +58,11 @@ Route::middleware(['auth:sanctum', 'verified', 'authretail'])->group(function ()
     Route::get('/retail/detail-pesanan/{id}', [RetailController::class, 'detailPesanan'])->name('retail/detail-pesanan');
 
     Route::get('/retail/stok', [RetailController::class, 'stok'])->name('retail/stok');
-    Route::get('/retail/form-update-barang/{id}', [RetailController::class, 'formUpdateBarang'])->name('retail/form-update-barang');
-    Route::get('/retail/update-stok', [RetailController::class, 'updateBarang'])->name('retail/update-stok');
-    Route::get('/retail/delete-barang/{id}', [RetailController::class, 'deleteBarang'])->name('retail/delete-barang');
-    Route::get('/retail/form-create-penjualan/{id}', [RetailController::class, 'formCreatePenjualan'])->name('retail/form-create-penjualan');
-    Route::get('/retail/create-penjualan', [RetailController::class, 'createPenjualan'])->name('tambah-penjualan');
+    Route::get('/retail/form-edit-barang/{id}', [RetailController::class, 'formEditBarang'])->name('retail/form-edit-barang');
+    Route::get('/retail/edit-stok', [RetailController::class, 'editBarang'])->name('retail/edit-stok');
+    Route::get('/retail/hapus-barang/{id}', [RetailController::class, 'hapusBarang'])->name('retail/hapus-barang');
+    Route::get('/retail/form-tambah-penjualan/{id}', [RetailController::class, 'formTambahPenjualan'])->name('retail/form-tambah-penjualan');
+    Route::get('/retail/tambah-penjualan', [RetailController::class, 'tambahPenjualan'])->name('tambah-penjualan');
 
     Route::get('/retail/penjualan', [RetailController::class, 'penjualan'])->name('retail/penjualan');
     Route::get('/retail/detail-penjualan/{id}', [RetailController::class, 'detailPenjualan'])->name('retail/detail-penjualan');
