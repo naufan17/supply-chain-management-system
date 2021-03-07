@@ -102,11 +102,6 @@ class SupplierController extends Controller
 
         PermintaanSupplier::where('id_pesanan', $request->id_pesanan)
                             ->update(['status' => 'Terkirim']);
-
-        StokRetail::create([
-            'nama_barang' => $request->nama_barang,
-            'stok' => $request->total
-        ]);
         
         return redirect('supplier/permintaan');
     }

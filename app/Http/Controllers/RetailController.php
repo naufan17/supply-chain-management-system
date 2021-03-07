@@ -71,6 +71,28 @@ class RetailController extends Controller
         return redirect('retail/pesan');
     }
 
+    public function formTerimaPesanan($id)
+    {
+        $permintaanSuppliers = PermintaanSupplier::leftJoin('stok_suppliers', 'permintaan_suppliers.id_barang', '=', 'stok_suppliers.id_barang')
+                                                    ->where('id_pesanan', $id)
+                                                    ->get();
+                
+        return view('retail.terima-pesanan', compact('permintaanSuppliers'));
+    }
+
+    public function terimaPesanan(Request $request)
+    {        
+        PermintaanSupplier::where('id_pesanan', $request->id_pesanan)
+                            ->update(['status' => 'Selesai']);
+
+        StokRetail::create([
+            'nama_barang' => $request->nama_barang,
+            'stok' => $request->total
+        ]);
+        
+        return redirect('retail/pesan');
+    }
+
     public function detailPesanan($id)
     {
         $permintaanSuppliers = PermintaanSupplier::leftJoin('stok_suppliers', 'permintaan_suppliers.id_barang', '=', 'stok_suppliers.id_barang')

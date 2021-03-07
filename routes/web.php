@@ -55,6 +55,8 @@ Route::middleware(['auth:sanctum', 'verified', 'authretail'])->group(function ()
 
     Route::get('/retail/pesan', [RetailController::class, 'pesan'])->name('retail/pesan');
     Route::get('/retail/batal-pesanan/{id}', [RetailController::class, 'batalPesanan'])->name('batal-pesanan');
+    Route::get('/retail/form-terima-pesanan/{id}', [RetailController::class, 'formTerimaPesanan'])->name('retail/form-terima-pesanan');
+    Route::get('/retail/terima-pesanan', [RetailController::class, 'terimaPesanan'])->name('retail/terima-pesanan');
     Route::get('/retail/detail-pesanan/{id}', [RetailController::class, 'detailPesanan'])->name('retail/detail-pesanan');
 
     Route::get('/retail/stok', [RetailController::class, 'stok'])->name('retail/stok');

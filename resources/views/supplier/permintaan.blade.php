@@ -43,8 +43,12 @@
                                 <div class="text-sm text-gray-900">{{ $permintaanSupplier->total }}</div>
                             </td>
                             <td class="px-6 py-3 whitespace-nowrap">
-                                @if( $permintaanSupplier->status == "Terkirim")
+                                @if( $permintaanSupplier->status == "Selesai")
                                     <span class="px-3 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        {{ $permintaanSupplier->status }}
+                                    </span>
+                                @elseif( $permintaanSupplier->status == "Terkirim")
+                                    <span class="px-3 inline-flex text-sm leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
                                         {{ $permintaanSupplier->status }}
                                     </span>
                                 @elseif( $permintaanSupplier->status == "Batal")
